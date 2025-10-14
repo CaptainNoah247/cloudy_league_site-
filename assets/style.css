@@ -19,3 +19,8 @@ ul.grid { list-style:none; padding:0; margin:0; display:grid; gap:12px; grid-tem
 .card { background:#fbfdff; border:1px solid #e6eef7; padding:14px; border-radius:10px; }
 .small { font-size: 14px; }
 footer a { color:#1f5eff; text-decoration:none; }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
