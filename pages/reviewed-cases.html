@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviewed Cases</title>
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .celebrate-wrap { position: relative; overflow: hidden; border-radius: 12px; }
+  .celebrate {
+    position: relative; padding: 22px; border:1px solid #e6eef7; border-radius:12px;
+    background: linear-gradient(180deg, #ffffff, #f7fbff);
+    box-shadow: 0 10px 30px rgba(3,18,33,.06);
+  }
+  .celebrate h2 { margin: 0 0 8px 0; }
+  .confetti { position:absolute; inset:0; pointer-events:none; }
+  .confetti i {
+    position:absolute; width:8px; height:8px; border-radius:2px; opacity:0;
+    animation: drop 1400ms ease-in forwards;
+  }
+  @keyframes drop {
+    0% { transform: translateY(-20px) rotate(0); opacity:0; }
+    10% { opacity:1; }
+    100% { transform: translateY(300px) rotate(480deg); opacity:0; }
+  }
+  .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
+  .btn {
+    display:inline-block; padding:8px 12px; border-radius:8px; text-decoration:none;
+    background:#184090; color:#fff; border:1px solid #14367a; cursor:pointer;
+  }
+  .btn:focus { outline: 2px solid #a7c4ff; outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce) { .confetti i { animation: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="/assets/trophy.jpg" alt="Trophy" width="36" height="36" style="border-radius:8px">
+    <div>
+      <h1>Cloudy with a Chance of Football — Reviewed Cases</h1>
+      <p class="small">Officially reviewed and closed by the Commissioner.</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="/index.html">Home</a>
+  <a href="/pages/sections-1.html">Sections 1–5</a>
+  <a href="/pages/sections-2.html">Sections 6–10</a>
+  <a href="/pages/sections-3.html">Sections 11–15</a>
+  <a href="/pages/sections-4.html">Sections 16–20</a>
+  <a href="/pages/sections-5.html">Sections 21–25</a>
+  <a href="/pages/sections-6.html">Sections 26–30</a>
+  <a href="/pages/hall-of-shame.html">Hall of Shame</a>
+  <a href="/pages/trade-court.html">Trade Court</a>
+  <a href="/pages/fantasy-prison.html">Fantasy Prison</a>
+  <a href="/pages/commissioner-appeals.html">Commissioner Appeals</a>
+  <a href="/pages/venmo-scandal-2025.html">$100 Scandal</a>
+  <a href="/pages/ongoing-investigations.html">Ongoing Investigations</a>
+  <a href="/pages/reviewed-cases.html" class="active">Reviewed Cases</a>
+</nav>
+
+<main>
+  <section class="celebrate-wrap">
+    <div class="celebrate">
+      <h2>PBIDDYBIDDY (Logan) — Case Closed</h2>
+      <p class="small">Final review complete. No fault found. Trade vetoed; no further action.</p>
+
+      <div class="actions">
+        <a class="btn" href="/pages/case-pbiddybiddy.html">View Case File</a>
+        <button class="btn" id="playAudioBtn" type="button">Play celebratory clip</button>
+      </div>
+
+      <div class="confetti" id="confettiLayer" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h3>Notes</h3>
+    <ul>
+      <li>Reviewed by the Commissioner with full evidence log.</li>
+      <li>Logged in league records on <span id="closedDate"></span>.</li>
+    </ul>
+  </section>
+
+  <audio id="verdictAudio" preload="none">
+    <!-- Add a legally-cleared file and then uncomment this source -->
+    <!-- <source src="/assets/audio/free-at-last.mp3" type="audio/mpeg"> -->
+  </audio>
+</main>
+
+<footer class="small">© Cloudy with a Chance of Football • Built for the Cloudy League.</footer>
+
+<script>
+  // Stamp date
+  document.getElementById('closedDate').textContent = new Date().toLocaleDateString();
+
+  // Confetti pop on load
+  (function pop() {
+    const layer = document.getElementById('confettiLayer');
+    if (!layer) return;
+    const colors = ['#5ec1ff','#ffd166','#ff6b6b','#7bd389','#b197fc'];
+    const pieces = 80;
+    layer.innerHTML = '';
+    for (let i=0;i<pieces;i++){
+      const el = document.createElement('i');
+      const size = Math.round(6 + Math.random()*8);
+      const left = Math.round(Math.random()*100);
+      const delay = Math.round(Math.random()*300);
+      el.style.left = left + '%';
+      el.style.top = '-10px';
+      el.style.width = size+'px';
+      el.style.height = size+'px';
+      el.style.background = colors[i % colors.length];
+      el.style.animationDelay = delay+'ms';
+      layer.appendChild(el);
+    }
+    setTimeout(()=>{ layer.innerHTML=''; }, 2000);
+  })();
+
+  // Audio: user click (autoplay policies)
+  document.getElementById('playAudioBtn').addEventListener('click', function(){
+    const a = document.getElementById('verdictAudio');
+    if (!a) return;
+    if (a.src === '' || a.querySelector('source') === null) {
+      alert('Audio file not found. Add /assets/audio/free-at-last.mp3 first.');
+      return;
+    }
+    a.currentTime = 0; a.play();
+  });
+</script>
+</body>
+</html>

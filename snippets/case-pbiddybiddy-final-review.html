@@ -1,0 +1,20 @@
+<!-- Paste this block into /pages/case-pbiddybiddy.html below the case header -->
+<section class="card verdict success" style="margin-top:12px">
+  <h3>Final Review — Case Closed</h3>
+  <ul>
+    <li>All evidence reviewed carefully.</li>
+    <li>No fault found for PBIDDYBIDDY (Logan).</li>
+    <li>Trade vetoed; no further action taken.</li>
+  </ul>
+  <p class="small">Filed by the Commissioner. Date: <span id="verdictDate"></span></p>
+</section>
+<script>
+  (function () {
+    var el = document.getElementById('verdictDate');
+    if (el) el.textContent = new Date().toLocaleDateString();
+  })();
+</script>
+
+<style>
+  .verdict.success { border-left: 6px solid #2ecc71; background: #f6fff9; }
+</style>
