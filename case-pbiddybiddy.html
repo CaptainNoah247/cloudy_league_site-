@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case: PBIDDYBIDDY (Logan)</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="/assets/trophy.jpg" alt="Trophy" width="36" height="36" style="border-radius:8px">
+    <div>
+      <h1>Cloudy with a Chance of Football — Case File</h1>
+      <p class="small">Case: PBIDDYBIDDY (Logan)</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="/index.html">Home</a>
+  <a href="/pages/sections-1.html">Sections 1–5</a>
+  <a href="/pages/sections-2.html">Sections 6–10</a>
+  <a href="/pages/sections-3.html">Sections 11–15</a>
+  <a href="/pages/sections-4.html">Sections 16–20</a>
+  <a href="/pages/sections-5.html">Sections 21–25</a>
+  <a href="/pages/sections-6.html">Sections 26–30</a>
+  <a href="/pages/hall-of-shame.html">Hall of Shame</a>
+  <a href="/pages/trade-court.html">Trade Court</a>
+  <a href="/pages/fantasy-prison.html">Fantasy Prison</a>
+  <a href="/pages/commissioner-appeals.html">Commissioner Appeals</a>
+  <a href="/pages/venmo-scandal-2025.html">$100 Scandal</a>
+  <a href="/pages/ongoing-investigations.html">Ongoing Investigations</a>
+  <a href="/pages/reviewed-cases.html">Reviewed Cases</a>
+  <a href="/pages/vote-collusion.html">League Vote</a>
+</nav>
+
+<main>
+  <h2>Case File — PBIDDYBIDDY (Logan)</h2>
+  <p class="meta">Subject: Logan • Team: PBIDDYBIDDY • Case #002</p>
+
+  <img src="/assets/pbiddybiddy.jpg" alt="PBIDDYBIDDY" class="portrait">
+
+  <h3>Allegations</h3>
+  <ul>
+    <li>Reported involvement in payment for trades.</li>
+    <li>Questionable trade timing and rapid proposals.</li>
+  </ul>
+
+  <h3>Evidence</h3>
+  <ul>
+    <li>Chat excerpts (redacted).</li>
+    <li>Transaction screenshot (reviewed).</li>
+  </ul>
+
+  <!-- FINAL REVIEW BLOCK -->
+  <section class="card verdict success" style="margin-top:12px">
+    <h3>Final Review — Case Closed</h3>
+    <ul>
+      <li>All evidence reviewed carefully.</li>
+      <li>No fault found for PBIDDYBIDDY (Logan).</li>
+      <li>Trade vetoed; no further action taken.</li>
+    </ul>
+    <p class="small">Filed by the Commissioner. Date: <span id="verdictDate"></span></p>
+  </section>
+
+  <p class="small">Summary: After a thorough review of chat logs, payment records, and timestamps, the commissioner's panel found insufficient evidence of actionable collusion.</p>
+
+  <hr>
+
+  <h3>Notes</h3>
+  <ul>
+    <li>Case closed and recorded in league minutes.</li>
+    <li>All parties notified in league chat.</li>
+  </ul>
+
+  <!-- Celebration animation + audio (plays only on this page) -->
+  <div id="celebrateArea" style="text-align:center;margin-top:18px">
+    <div id="freeAtLastAnimation" class="mlk-animation" aria-hidden="false" style="opacity:0; transition: opacity 2s ease-in; font-size:1.4rem; font-weight:700; color:#2ecc71; text-shadow:2px 2px 8px rgba(0,0,0,0.35); margin-bottom:10px;">
+      Free at last, free at last!
+    </div>
+    <!-- audio path expects file in /assets/ -->
+    <audio id="mlkAudio" src="../assets/free_at_last.mp3" preload="none"></audio>
+    <div style="margin-top:8px">
+      <button id="replayBtn" style="background:#184090;color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer">Play clip</button>
+    </div>
+  </div>
+
+</main>
+
+<footer class="small">© Cloudy with a Chance of Football • Built for the Cloudy League. All rights reserved.</footer>
+
+<script>
+  // Set verdict date
+  (function () {
+    var el = document.getElementById('verdictDate');
+    if (el) el.textContent = new Date().toLocaleDateString();
+  })();
+
+  // Play animation + audio on load (user gesture may be required)
+  window.addEventListener('load', function() {
+    var anim = document.getElementById('freeAtLastAnimation');
+    var audio = document.getElementById('mlkAudio');
+    // fade in the text
+    setTimeout(function() {
+      anim.style.opacity = 1;
+      // try play; browsers often block autoplay unless user interacted; keep a replay button
+      audio.play().catch(function(e){ console.log('Autoplay blocked:', e); });
+    }, 500);
+  });
+
+  // Replay button for user-initiated playback
+  document.getElementById('replayBtn').addEventListener('click', function() {
+    var audio = document.getElementById('mlkAudio');
+    audio.currentTime = 0;
+    audio.play();
+  });
+</script>
+
+</body>
+</html>
